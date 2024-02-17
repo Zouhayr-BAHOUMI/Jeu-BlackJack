@@ -11,6 +11,16 @@ package com.blackjack.blackjack;
 public class BlackJack {
 
     public static void main(String[] args) {
-        System.out.println("helle you are in the game");
+        PaquetCartes paquet = new PaquetCartes();
+        paquet.remplirPaquetCartes();
+        paquet.melanger();
+        
+        System.out.println("la taille du paquet est "+ paquet.getSize());
+        
+        Carte cartetirer = paquet.tirerCarte();
+        if (cartetirer!= null)
+            System.out.println("la carte tire est "+ cartetirer);
+        
+        System.out.println("la taille nouveau de paquet est  "+ paquet.getSize());
     }
 }

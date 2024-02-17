@@ -9,8 +9,20 @@ package com.blackjack.blackjack;
  * @author user
  */
 public enum Valeur {
-     ACE ("A", 11),
-     JACK ("J", 10);
+        
+        ACE ("ace", 11),
+        JACK ("jack", 10),
+        QUEEN ("queen", 10),
+        KING ("king", 10),
+        DEUX ("deux", 2),
+        TROIS ("trois", 3),
+        QUATRE ("quatre", 4),
+        CINQ ("cinq", 5),
+        SIX ("six", 6),
+        SEPT ("sept", 7),
+        HUIT ("huit", 8),
+        NEUF ("neuf", 9),
+        DIX ("dix", 10);
      
      private final String nom;  
      private  int valeur;
