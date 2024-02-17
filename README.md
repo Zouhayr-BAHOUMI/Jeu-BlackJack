@@ -1,5 +1,5 @@
 # Jeu-BlackJack
-#### Vous êtes développeur back-end JAVA et on vous demande de faire des ateliers de jeux aux profils des apprenants de l'ENAA. L’équipe pédagogique décide de créer un jeu de cartes qui aident les apprenants à s’amuser.
+#### En tant que développeur back-end JAVA, ma mission est de concevoir des ateliers de jeux adaptés aux profils des apprenants de l'ENAA. À la demande de l'équipe pédagogique, je suis chargé(e) de créer un jeu de cartes divertissant et éducatif, destiné à aider les apprenants à s'amuser tout en renforçant leurs compétences.
 
 ​
 
