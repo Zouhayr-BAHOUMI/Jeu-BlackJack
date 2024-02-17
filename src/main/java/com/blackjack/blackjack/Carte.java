@@ -27,7 +27,7 @@ public class Carte {
     
     @Override
         public String toString(){
-           return "["+this.valeur.toString()+"|"+this.type.toString()+"]";
+           return "["+this.valeur.getNom()+"|"+this.type.getNom()+"] ==> "+this.valeur.getValeur();
         }
             
 }

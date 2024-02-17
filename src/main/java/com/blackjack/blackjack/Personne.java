@@ -14,7 +14,13 @@ abstract public class Personne {
     public Personne(){
       this.main=new Main();
     }
+
+    public Main getMain() {
+        return main;
+    }
     
-    abstract public Carte tirerCarte(PaquetCartes paquet);
-    abstract public void voirResultCarte();
+    
+    
+    abstract public void  tirerCarte(PaquetCartes paquet);
+    //abstract public void voirCartes();
 }

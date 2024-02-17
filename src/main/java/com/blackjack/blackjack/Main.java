@@ -48,6 +48,14 @@ public class Main {
         public int getNbCartes() {
             return nbCartes;
         }
+
+        public List<Carte> getCartes() {
+            return cartes;
+        }
+        
+        
+        
+        
     
     
 }
