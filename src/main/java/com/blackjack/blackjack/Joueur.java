@@ -9,5 +9,17 @@ package com.blackjack.blackjack;
  * @author user
  */
 public class Joueur {
+    private String username;
+    private double solde;
+    
+    public Joueur(String username, double solde){
+        super();
+        this.username = username;
+        this.solde = solde;
+    }
+    
+    public void placerMise(double valeurMiser){
+       solde -= valeurMiser;
+    }
     
 }

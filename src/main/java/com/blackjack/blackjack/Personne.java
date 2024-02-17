@@ -8,6 +8,13 @@ package com.blackjack.blackjack;
  *
  * @author user
  */
-public class Personne {
+abstract public class Personne {
+    protected Main main;
     
+    public Personne(){
+      this.main=new Main();
+    }
+    
+    abstract public Carte tirerCarte(PaquetCartes paquet);
+    abstract public void voirResultCarte();
 }
