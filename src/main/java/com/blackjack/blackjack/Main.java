@@ -52,6 +52,15 @@ public class Main {
         public List<Carte> getCartes() {
             return cartes;
         }
+
+        public int getValeurTotal() {
+            return valeurTotal;
+        }
+
+        
+        
+        
+        
         
         
         

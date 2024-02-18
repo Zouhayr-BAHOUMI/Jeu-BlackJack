@@ -30,6 +30,10 @@ public class BlackJack {
             System.out.println("Donner votre mise sir !");
                 double mise = scanner.nextDouble();
                 joueur.placerMise(mise);
+                if (mise > joueur.getSolde()) {
+                    System.out.println("Solde insuffisant.");
+                    return;
+                }
                 croupier.distribuerCartes(joueur, paquet);
                 
             System.out.println();
@@ -50,7 +54,7 @@ public class BlackJack {
                     joueur.voirCartes();
                     
                    if (joueur.getMain().calculerValeurMain() > 21 ){
-                        joueur.afficherResultat("loose");
+                        joueur.setSolde(joueur.getSolde()- mise);
                         break;
                    }
                        
@@ -69,6 +73,8 @@ public class BlackJack {
             }
             
             croupier.comparerMains(joueur);
+            
+           
         }
 
         
@@ -85,31 +91,42 @@ public class BlackJack {
         
         System.out.println("la taille nouveau de paquet est  "+ paquet.getSize());*/
        
-        System.out.println("================  You are in the game  ================");
-        System.out.println();
-        System.out.println("Bonjour You, Ready? -_- !");
-        System.out.println();
-        System.out.println("-- Pablo Table --");
-        System.out.println("1- Commencer à jouer");
-        System.out.println("2- je le consulter mon solde  ");
-        System.out.println();
-        System.out.println("Entrez votre choix : ");
+       Scanner scanner = new Scanner(System.in);
+        int choix;
         
-        Scanner scanner = new Scanner(System.in);
-        int choix = scanner.nextInt();
+        while(true){
+            BlackJack jeu = new BlackJack("Amine",400,17);
+            System.out.println("================  You are in the game  ================");
+            System.out.println();
+            System.out.println("Bonjour, "+jeu.joueur.getUsername()+" Ready? -_- !");
+            System.out.println();
+            System.out.println("-- Pablo Table --");
+            System.out.println("1- Commencer à jouer");
+            System.out.println("2- je le consulter mon solde  ");
+            System.out.println();
+            System.out.println("Entrez votre choix : ");
 
-        switch (choix) {
-        
-            case 1:
-                BlackJack jeu = new BlackJack("Zouhayr",200,17);
-                jeu.jouerPartie();
-                break;
-            case 2:
-                System.out.println("-> Votre solde de jetons est de : 200 pièces");
-                break;
-            default:
-                System.out.println("Choix invalide.");
-                break;
+            if (scanner.hasNextInt()){
+                choix = scanner.nextInt();
+                switch (choix) {
+
+                    case 1:
+                        
+                        jeu.jouerPartie();
+                        break;
+                    case 2:
+                        System.out.println("-> Votre solde de jetons est de : "+jeu.joueur.getSolde()+" pièces");
+                        break;
+                    default:
+                        System.out.println("Choix invalide.");
+                        break;
+                }
+            }else{
+                   System.out.println("entrer une nombre.");
+                   scanner.next();
+            }
         }
+        
+        
     }
 }

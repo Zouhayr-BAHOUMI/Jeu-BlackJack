@@ -41,14 +41,14 @@ public class Joueur extends Personne {
             System.out.println("<<< le paquet est vide.");
     }
     
-    public void afficherResultat(String resultat){
+    public void consulterResultat(String resultat){
             System.out.println("<<<" + username + " you " + resultat);
     }
     
     @Override
     public void voirCartes() {
         
-        System.out.println("Votre main : ");
+        System.out.println("Votre main : "+main.calculerValeurMain());
         int numberCarte = 1;
         for (Carte carte : main.getCartes()) {
             System.out.println("carte "+numberCarte+ " : " +carte);
@@ -59,6 +59,16 @@ public class Joueur extends Personne {
     public double getSolde() {
         return solde;
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setSolde(double solde) {
+        this.solde = solde;
+    }
+    
+    
     
     
     

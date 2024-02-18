@@ -43,35 +43,32 @@ public class Croupier extends Personne{
             }
         }
         
-        public void comparerMains(Joueur joueur){
+        public void  comparerMains(Joueur joueur){
            
            int valeurMainJoueur = joueur.getMain().calculerValeurMain();
            int valeurMainCroupier = main.calculerValeurMain();
            
            if ( valeurMainCroupier>21 || (valeurMainJoueur <= 21 && valeurMainJoueur > valeurMainCroupier)){
-                joueur.afficherResultat("win !!!");
+                joueur.consulterResultat("win !!!");
            }else if (valeurMainJoueur == valeurMainCroupier){
-                joueur.afficherResultat("ta3adol");
-           }else
-               joueur.afficherResultat("loooooose");
+                joueur.consulterResultat("in ta3adol");
+           }else{
+               joueur.consulterResultat("loooooose");
+           }
         }
         
         
         @Override
         public void voirCartes() {
         
-        System.out.println("Croupier main : ");
+        System.out.println("Croupier main :  << "+ main.calculerValeurMain()+">>");
             for (int i=0; i< main.getCartes().size(); i++){
                 if (i == 1 && !carteCasheeRelevee)
-                    System.out.println("Carte "+(i+1)+ " : cashee");
+                    System.out.println("Carte " +(i+1)+ ":cashee");
                 else
                     System.out.println("Carte "+(i+1)+ ":" +main.getCartes().get(i).toString());
             }
             
-        }
-
-        public int getValeurTotalLimit() {
-            return valeurTotalLimit;
         }
         
         
