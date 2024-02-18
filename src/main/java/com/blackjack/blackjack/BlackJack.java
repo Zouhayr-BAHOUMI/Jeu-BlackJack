@@ -12,6 +12,66 @@ import java.util.Scanner;
  */
 public class BlackJack {
 
+    private PaquetCartes paquet;
+    private Joueur joueur;
+    private Croupier croupier;
+    
+        public BlackJack(String username, double solde, int valeurTotalLimit){
+            this.paquet= new PaquetCartes ();
+            this.paquet.remplirPaquetCartes();
+            this.paquet.melanger();
+            
+            this.joueur = new Joueur (username,solde);
+            this.croupier = new Croupier(valeurTotalLimit);
+        } 
+        
+        public void jouerPartie(){
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Donner votre mise sir !");
+                double mise = scanner.nextDouble();
+                joueur.placerMise(mise);
+                croupier.distribuerCartes(joueur, paquet);
+                
+            System.out.println();
+            
+            System.out.println("Le jeu va commencer , bon courage °-° ");
+                
+                croupier.voirCartes();
+                joueur.voirCartes();
+                
+            while(true){
+                System.out.println("1- Hit (ajouter une carte)");
+                System.out.println("2- Stand (Arrêter)");
+                System.out.println("Entrez votre choix : ");
+                int choix = scanner.nextInt();
+                
+                if (choix == 1){
+                    joueur.tirerCarte(paquet);
+                    joueur.voirCartes();
+                    
+                   if (joueur.getMain().calculerValeurMain() > 21 ){
+                        joueur.afficherResultat("loose");
+                        break;
+                   }
+                       
+                }else if( choix == 2){
+                    break;
+                }else
+                    System.out.println("invalid choix");
+            }
+            
+            croupier.releverCarteCashe();
+            croupier.voirCartes();
+            
+            while (croupier.getMain().calculerValeurMain() < 17){
+                croupier.tirerCarte(paquet);
+                croupier.voirCartes();
+            }
+            
+            croupier.comparerMains(joueur);
+        }
+
+        
     public static void main(String[] args) {
        /* PaquetCartes paquet = new PaquetCartes();
         paquet.remplirPaquetCartes();
@@ -41,8 +101,8 @@ public class BlackJack {
         switch (choix) {
         
             case 1:
-                //BlackJack jeu = new BlackJack();
-                // jeu.demarrerPartie();
+                BlackJack jeu = new BlackJack("Zouhayr",200,17);
+                jeu.jouerPartie();
                 break;
             case 2:
                 System.out.println("-> Votre solde de jetons est de : 200 pièces");

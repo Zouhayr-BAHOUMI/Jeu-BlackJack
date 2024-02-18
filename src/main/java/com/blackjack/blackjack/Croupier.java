@@ -21,6 +21,8 @@ public class Croupier extends Personne{
         
         public void distribuerCartes(Joueur joueur, PaquetCartes paquet){
            joueur.recevoirCartes(paquet.tirerCarte(), paquet.tirerCarte());
+           main.ajouterCarte(paquet.tirerCarte());
+           main.ajouterCarte(paquet.tirerCarte());
         }
         
         public void releverCarteCashe(){
@@ -47,11 +49,11 @@ public class Croupier extends Personne{
            int valeurMainCroupier = main.calculerValeurMain();
            
            if ( valeurMainCroupier>21 || (valeurMainJoueur <= 21 && valeurMainJoueur > valeurMainCroupier)){
-                joueur.afficherResultat("gagner");
+                joueur.afficherResultat("win !!!");
            }else if (valeurMainJoueur == valeurMainCroupier){
                 joueur.afficherResultat("ta3adol");
            }else
-               joueur.afficherResultat("perdu");
+               joueur.afficherResultat("loooooose");
         }
         
         
@@ -61,9 +63,9 @@ public class Croupier extends Personne{
         System.out.println("Croupier main : ");
             for (int i=0; i< main.getCartes().size(); i++){
                 if (i == 1 && !carteCasheeRelevee)
-                    System.out.println("Carte : "+ (i+1)+ "cashee");
+                    System.out.println("Carte "+(i+1)+ " : cashee");
                 else
-                    System.out.println("Carte "+ (i+1)+ ":" +main.getCartes().get(i).toString());
+                    System.out.println("Carte "+(i+1)+ ":" +main.getCartes().get(i).toString());
             }
             
         }
