@@ -19,8 +19,7 @@ abstract public class Personne {
         return main;
     }
     
-    
-    
+
     abstract public void  tirerCarte(PaquetCartes paquet);
-    //abstract public void voirCartes();
+    abstract public void  voirCartes();
 }
