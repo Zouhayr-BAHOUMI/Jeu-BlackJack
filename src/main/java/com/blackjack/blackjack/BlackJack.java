@@ -54,8 +54,9 @@ public class BlackJack {
                     joueur.voirCartes();
                     
                    if (joueur.getMain().calculerValeurMain() > 21 ){
+                        joueur.consulterResultat("loose");
                         joueur.setSolde(joueur.getSolde()- mise);
-                        break;
+                        return;
                    }
                        
                 }else if( choix == 2){

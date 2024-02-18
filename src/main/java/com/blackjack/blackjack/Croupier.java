@@ -61,12 +61,19 @@ public class Croupier extends Personne{
         @Override
         public void voirCartes() {
         
-        System.out.println("Croupier main :  << "+ main.calculerValeurMain()+">>");
-            for (int i=0; i< main.getCartes().size(); i++){
-                if (i == 1 && !carteCasheeRelevee)
-                    System.out.println("Carte " +(i+1)+ ":cashee");
-                else
-                    System.out.println("Carte "+(i+1)+ ":" +main.getCartes().get(i).toString());
+         int totalValue = main.calculerValeurMain();
+            
+            if (!carteCasheeRelevee) {
+                totalValue -= main.getCartes().get(1).getValeur().getValeur();
+            }
+            System.out.println("Croupier main :  << "+totalValue + " >>");
+
+            for (int i = 0; i < main.getCartes().size(); i++) {
+                if (i == 1 && !carteCasheeRelevee) {
+                    System.out.println("Carte " + (i + 1) + ": cashee");
+                } else {
+                    System.out.println("Carte " + (i + 1) + ": " + main.getCartes().get(i).toString());
+                }
             }
             
         }
