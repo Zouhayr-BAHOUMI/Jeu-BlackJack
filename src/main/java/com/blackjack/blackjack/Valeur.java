@@ -12,6 +12,7 @@ public enum Valeur {
      ACE ("A", 11),
      JACK ("J", 10);
      
+     
      private final String nom;  
      private  int valeur;
      
