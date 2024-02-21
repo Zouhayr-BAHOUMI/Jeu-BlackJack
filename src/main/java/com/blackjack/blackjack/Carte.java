@@ -8,7 +8,7 @@ package com.blackjack.blackjack;
  *
  * @author user
  */
-public class Carte {
+public class Carte implements CarteInterface {
     private Valeur valeur;
     private Types type;
     

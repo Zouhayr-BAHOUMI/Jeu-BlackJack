@@ -12,7 +12,7 @@ import java.util.Collections;
  *
  * @author user
  */
-public class PaquetCartes {
+public class PaquetCartes implements PaquetCartesInterface{
        
         private List<Carte> cartes;
         private int size;
@@ -22,6 +22,7 @@ public class PaquetCartes {
                 this.size=0;
             }
         
+        @Override
         public void remplirPaquetCartes(){
            for (Types type : Types.values()){
                for(Valeur valeur : Valeur.values()){
@@ -33,6 +34,7 @@ public class PaquetCartes {
                melanger();
         }
 
+        @Override
         public void melanger(){
             Collections.shuffle(cartes);
         }
@@ -41,6 +43,7 @@ public class PaquetCartes {
             return size;
         }
         
+        @Override
         public Carte tirerCarte(){
              if (cartes.isEmpty()){
                System.out.println("le paquet est vide ");

@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author user
  */
-public class Main {
+public class Main implements MainInterface {
        
         private List<Carte> cartes;
         private int valeurTotal;
@@ -22,11 +22,13 @@ public class Main {
           this.nbCartes=0;
         }
 
+        @Override
         public void ajouterCarte(Carte carte){
             cartes.add(carte);
             this.nbCartes++;
         }
 
+        @Override
         public int calculerValeurMain(){
             int nombreAs=0;
             valeurTotal = 0;
