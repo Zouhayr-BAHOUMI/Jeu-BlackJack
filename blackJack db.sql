@@ -2,10 +2,12 @@ create table Main (
     id_Main  SERIAL PRIMARY KEY,
 	valeurTotal INT NOT NULL,
 	nbCartes INT NOT NULL,
-	id_joueur INT,
-	id_croupier INT,
-	FOREIGN KEY (id_joueur) REFERENCES Joueur(id_joueur),
-    FOREIGN KEY (id_croupier) REFERENCES Croupier(id_croupier)
+	id_Joueur INT,
+	id_Croupier INT,
+	id_Carte INT,
+	FOREIGN KEY (id_Carte) REFERENCES Carte(id_Carte),
+	FOREIGN KEY (id_Joueur) REFERENCES Joueur(id_Joueur),
+    FOREIGN KEY (id_Croupier) REFERENCES Croupier(id_Croupier)
 );
 
 create table Carte (
@@ -16,7 +18,7 @@ create table Carte (
 );
 
 create table Croupier (
-	id_Carte  SERIAL PRIMARY KEY,
+	id_Croupier  SERIAL PRIMARY KEY,
 	valeurTotallimit NOT NULL
 );
 
