@@ -4,6 +4,7 @@
 
 package com.blackjack.blackjack;
 
+import java.sql.Connection;
 import java.util.Scanner;
 
 /**
@@ -18,7 +19,7 @@ public class BlackJack {
     
         public BlackJack(String username, double solde, int valeurTotalLimit){
             this.paquet= new PaquetCartes ();
-            this.paquet.remplirPaquetCartes();
+            this.paquet.remplirPaquetCartes(DbConnection.getConnection());
             this.paquet.melanger();
             
             this.joueur = new Joueur (username,solde);
@@ -29,7 +30,7 @@ public class BlackJack {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Donner votre mise sir !");
                 double mise = scanner.nextDouble();
-                joueur.placerMise(mise);
+                joueur.placerMise(DbConnection.getConnection(),mise);
                 if (mise > joueur.getSolde()) {
                     System.out.println("Solde insuffisant.");
                     return;
@@ -56,6 +57,7 @@ public class BlackJack {
                    if (joueur.getMain().calculerValeurMain() > 21 ){
                         joueur.consulterResultat("loose");
                         joueur.setSolde(joueur.getSolde()- mise);
+                       joueur.placerMise(DbConnection.getConnection(), -mise);
                         return;
                    }
                        
@@ -91,10 +93,11 @@ public class BlackJack {
             System.out.println("la carte tire est "+ cartetirer);
         
         System.out.println("la taille nouveau de paquet est  "+ paquet.getSize());*/
+       Connection connection = DbConnection.getConnection();
        
        Scanner scanner = new Scanner(System.in);
         int choix;
-        
+
         while(true){
             BlackJack jeu = new BlackJack("Amine",400,17);
             System.out.println("================  You are in the game  ================");

@@ -4,6 +4,8 @@
  */
 package com.blackjack.blackjack;
 
+import java.sql.Connection;
+
 /**
  *
  * @author user

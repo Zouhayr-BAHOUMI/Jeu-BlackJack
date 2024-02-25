@@ -67,7 +67,7 @@ public class Croupier extends Personne implements CroupierInterface {
          int totalValue = main.calculerValeurMain();
             
             if (!carteCasheeRelevee) {
-                totalValue -= main.getCartes().get(1).getValeur().getValeur();
+                totalValue -= main.getCartes().get(1).getValeur();
             }
             System.out.println("Croupier main :  << "+totalValue + " >>");
 

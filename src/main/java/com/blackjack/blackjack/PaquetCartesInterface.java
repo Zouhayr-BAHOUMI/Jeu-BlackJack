@@ -4,12 +4,14 @@
  */
 package com.blackjack.blackjack;
 
+import java.sql.Connection;
+
 /**
  *
  * @author user
  */
 public interface PaquetCartesInterface {
-    void remplirPaquetCartes();
+    void remplirPaquetCartes(Connection connection);
     void melanger();
     Carte tirerCarte();
 }

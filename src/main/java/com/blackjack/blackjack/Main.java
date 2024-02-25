@@ -4,6 +4,9 @@
  */
 package com.blackjack.blackjack;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -33,8 +36,8 @@ public class Main implements MainInterface {
             int nombreAs=0;
             valeurTotal = 0;
             for (Carte carte : cartes){
-                valeurTotal+=carte.getValeur().getValeur();
-                if (carte.getValeur()== Valeur.ACE){
+                valeurTotal+=carte.getValeur();
+                if (carte.getValeur()== 11){
                   nombreAs ++;
                 }
             }
@@ -47,9 +50,17 @@ public class Main implements MainInterface {
             return valeurTotal;
         }
 
-        public int getNbCartes() {
-            return nbCartes;
+    private void misAjourMainValuer(Connection connection) {
+
+        String query = "UPDATE Main SET valeurTotal = ? WHERE id_Main = ?";
+
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, valeurTotal);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("valeurTotal not updating"+ e.getMessage());
         }
+    }
 
         public List<Carte> getCartes() {
             return cartes;

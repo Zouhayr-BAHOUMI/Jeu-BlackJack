@@ -4,6 +4,11 @@
  */
 package com.blackjack.blackjack;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author user
@@ -11,6 +16,8 @@ package com.blackjack.blackjack;
 public class Joueur extends Personne implements JoueurInterface {
     private String username;
     private double solde;
+
+
     
     public Joueur(String username, double solde){
         super();
@@ -19,8 +26,18 @@ public class Joueur extends Personne implements JoueurInterface {
     }
     
     @Override
-    public void placerMise(double valeurMiser){
-       solde -= valeurMiser;
+    public void placerMise(Connection connection,double valeurMiser){
+       try {
+           String updateQuery = "UPDATE Joueur SET solde = solde - ? WHERE username = ?";
+           PreparedStatement updateStatement = connection.prepareStatement(updateQuery);
+           updateStatement.setDouble(1, valeurMiser);
+           updateStatement.setString(2, "amine");
+           updateStatement.executeUpdate();
+           solde -= valeurMiser;
+       }catch (SQLException e){
+            System.out.println("Error placer mise: " + e.getMessage());
+       }
+
     }
     
     @Override
@@ -51,13 +68,14 @@ public class Joueur extends Personne implements JoueurInterface {
     
     @Override
     public void voirCartes() {
-        
+
         System.out.println("Votre main : "+main.calculerValeurMain());
         int numberCarte = 1;
         for (Carte carte : main.getCartes()) {
             System.out.println("carte "+numberCarte+ " : " +carte);
             numberCarte++;
         }
+
     }
 
     public double getSolde() {
@@ -71,13 +89,6 @@ public class Joueur extends Personne implements JoueurInterface {
     public void setSolde(double solde) {
         this.solde = solde;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
 }

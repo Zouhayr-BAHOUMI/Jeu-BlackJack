@@ -4,6 +4,10 @@
  */
 package com.blackjack.blackjack;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,15 +27,23 @@ public class PaquetCartes implements PaquetCartesInterface{
             }
         
         @Override
-        public void remplirPaquetCartes(){
-           for (Types type : Types.values()){
-               for(Valeur valeur : Valeur.values()){
-                   Carte carte = new Carte (valeur,type);
-                   cartes.add(carte);
-                   this.size++;
-               }
-           }
-               melanger();
+        public void remplirPaquetCartes(Connection connection){
+            try {
+                String query = "SELECT type, valeur, valeurnom FROM Carte";
+                PreparedStatement statement = connection.prepareStatement(query);
+                ResultSet resultat = statement.executeQuery();
+                while (resultat.next()) {
+                    String type = resultat.getString("type");
+                    int valeur = resultat.getInt("valeur");
+                    String valeurnom = resultat.getString("valeurnom");
+                    Carte carte = new Carte(type, valeur, valeurnom);
+                    cartes.add(carte);
+                    this.size++;
+                }
+                melanger();
+            } catch (SQLException e) {
+                System.out.println("while filling the deck with cards"+e.getMessage());
+            }
         }
 
         @Override

@@ -4,13 +4,15 @@
  */
 package com.blackjack.blackjack;
 
+import java.sql.Connection;
+
 /**
  *
  * @author user
  */
 public interface JoueurInterface {
    
-    void placerMise(double valeurMiser);
+    void placerMise(Connection connection,double valeurMiser);
     void recevoirCartes(Carte carte1, Carte carte2);
     void rester();
     void tirerCarte(PaquetCartes paquet);
